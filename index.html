@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegu Parimala - Salesforce QA Professional</title>
+    <style>
+        :root {
+            --primary: #0099cc;
+            --secondary: #2d3748;
+            --background: #f7fafc;
+            --text: #1a202c;
+            --light: #ffffff;
+            --accent: #e53e3e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--light);
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: 75vh;
+            padding: 50px 0;
+            background: linear-gradient(45deg, rgba(0, 153, 204, 0.1), rgba(0, 153, 204, 0.05));
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--secondary);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 25px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .btn:hover {
+            background-color: #007aa3;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        section {
+            padding: 70px 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 50px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 2;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .skill-card {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .skill-list {
+            list-style-position: inside;
+            padding-left: 20px;
+        }
+        
+        .skill-list li {
+            margin-bottom: 8px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: var(--light);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            background-color: rgba(0, 153, 204, 0.1);
+            color: var(--primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: var(--light);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-right {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-left::after {
+            right: -8px;
+        }
+        
+        .timeline-right::after {
+            left: -8px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--light);
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            font-size: 0.95rem;
+        }
+        
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .cert-card {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .cert-title {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-card {
+            background-color: var(--light);
+            padding: 20px;
+            text-align: center;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        /* Mobile menu */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-image {
+                margin-bottom: 30px;
+            }
+            
+            .hero-image img {
+                max-width: 250px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .experience-timeline::before {
+                left: 40px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .timeline-left, .timeline-right {
+                left: 0;
+                text-align: left;
+            }
+            
+            .timeline-left::after, .timeline-right::after {
+                left: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--light);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Vegu Parimala</div>
+                <button class="menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Vegu Parimala</h1>
+                <h2>Salesforce QA Professional</h2>
+                <p class="tagline">Passionate about delivering high-quality Salesforce solutions with 3+ years of experience in CRM platform testing.</p>
+                <div>
+                    <a href="#contact" class="btn">Contact Me</a>
+                    <a href="#projects" class="btn btn-outline">View Projects</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/api/placeholder/400/400" alt="Vegu Parimala Profile">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Vegu Parimala, a dedicated Salesforce QA professional with over 3 years of experience in the Salesforce.com CRM platform. I specialize in functional testing, with expertise in Sales Cloud, Service Cloud, and Revenue Cloud.</p>
+                    <p>I have a strong background in gathering requirements, writing and executing test cases, defect reporting, and tracking. My experience extends to various testing methodologies including Sanity Testing, System Integration Testing (SIT), Regression Testing, and User Acceptance Testing (UAT).</p>
+                    <p>With a focus on quality and attention to detail, I ensure that applications meet the highest standards before deployment. I'm passionate about delivering seamless user experiences and continuously improving processes to enhance efficiency.</p>
+                    <p>I hold an MBA in Information Technology and a Bachelor's degree in Computer Applications. My blend of technical knowledge and business acumen allows me to bridge the gap between technical requirements and business needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3 class="skill-title">Salesforce Expertise</h3>
+                    <ul class="skill-list">
+                        <li>Sales Cloud</li>
+                        <li>Service Cloud</li>
+                        <li>Revenue Cloud</li>
+                        <li>Force.com Platform</li>
+                        <li>Salesforce Administration</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Testing Skills</h3>
+                    <ul class="skill-list">
+                        <li>Functional Testing</li>
+                        <li>End-to-End Testing</li>
+                        <li>System Integration Testing</li>
+                        <li>Regression Testing</li>
+                        <li>User Acceptance Testing</li>
+                        <li>Sanity Testing</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Tools & Technologies</h3>
+                    <ul class="skill-list">
+                        <li>JIRA</li>
+                        <li>Agile Methodology</li>
+                        <li>Test Case Management</li>
+                        <li>Defect Reporting & Tracking</li>
+                        <li>Basic Selenium</li>
+                        <li>API Testing (Basic)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li>Requirements Gathering</li>
+                        <li>Project Coordination</li>
+                        <li>Root Cause Analysis</li>
+                        <li>Stakeholder Communication</li>
+                        <li>Team Collaboration</li>
+                        <li>Problem Solving</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">March 2023 - Present</div>
+                        <h3 class="timeline-title">IT Analyst - TE Connectivity</h3>
+                        <p class="timeline-desc">Working on Illuminate, Platform Health and PROS projects. Responsible for gathering business requirements, designing test cases, and executing end-to-end testing across multiple business processes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">March 2022 - March 2023</div>
+                        <h3 class="timeline-title">Functional Tester - Palo Alto Networks</h3>
+                        <p class="timeline-desc">Coordinated with different teams in the War Room, created test plans with up to 150 test cases for integration scenarios. Executed tests on three models: Net-new, Amend, and Renewal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 class="project-title">TE Connectivity - Illuminate Project</h3>
+                        <div class="project-tags">
+                            <span class="tag">Salesforce</span>
+                            <span class="tag">End-to-End Testing</span>
+                            <span class="tag">Sales Cloud</span>
+                        </div>
+                        <p>Involved in gathering business requirements and designing detailed test cases that reduced post-release defects by 25%. Executed end-to-end testing across multiple business processes ensuring data integrity.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 class="project-title">TE Connectivity - Platform Health</h3>
+                        <div class="project-tags">
+                            <span class="tag">Salesforce</span>
+                            <span class="tag">Process Optimization</span>
+                            <span class="tag">QA Process</span>
+                        </div>
+                        <p>Established QA processes and prepared test data, maintained defects and reported metrics to management. Participated in daily defect triage meetings and prepared audit documentation.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 class="project-title">TE Connectivity - PROS Integration</h3>
+                        <div class="project-tags">
+                            <span class="tag">Revenue Cloud</span>
+                            <span class="tag">PROS Quote</span>
+                            <span class="tag">Integration Testing</span>
+                        </div>
+                        <p>Worked on custom objects like Price Request, PROS Quote, and PROS Agreement. Performed root cause analysis of production defects and ensured post-go-live stability in Hypercare.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 class="project-title">Palo Alto Networks - CPQ Implementation</h3>
+                        <div class="project-tags">
+                            <span class="tag">Cyber Security</span>
+                            <span class="tag">Component Testing</span>
+                            <span class="tag">UI/UX</span>
+                        </div>
+                        <p>Created and executed test plans with up to 150 test cases. Executed tests on three models: Net-new, Amend, and Renewal. Proposed UI and verbiage changes that were accepted and appreciated.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications">
+                <div class="cert-card">
+                    <h3 class="cert-title">Infosys Certified Salesforce Administrator</h3>
+                    <p>Certified in Salesforce Administration, demonstrating proficiency in managing and configuring Salesforce organizations.</p>
+                </div>
+                <div class="cert-card">
+                    <h3 class="cert-title">Infosys Certified CPQ Developer</h3>
+                    <p>Specialized certification in Configure, Price, Quote (CPQ) development within the Salesforce ecosystem.</p>
+                </div>
+                <div class="cert-card">
+                    <h3 class="cert-title">Infosys Global Agile Developer Certification</h3>
+                    <p>Comprehensive understanding of Agile methodologies and their application in development processes.</p>
+                </div>
+                <div class="cert-card">
+                    <h3 class="cert-title">Infosys Certified DevOps Professional</h3>
+                    <p>Expertise in DevOps practices for streamlining development and operations workflows.</p>
+                </div>
+                <div class="cert-card">
+                    <h3 class="cert-title">Infosys Certified Cloud Beginner</h3>
+                    <p>Foundational knowledge of cloud computing principles and practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Achievements Section -->
+    <section id="awards">
+        <div class="container">
+            <h2 class="section-title">Awards & Achievements</h2>
+            <div class="certifications">
+                <div class="cert-card">
+                    <h3 class="cert-title">Certificate of Appreciation</h3>
+                    <p>Recognition for Accelerate projects performance as part of making Zero Bench a reality at Infosys.</p>
+                </div>
+                <div class="cert-card">
+                    <h3 class="cert-title">Commendable Performance Rating</h3>
+                    <p>Achieved a commendable performance rating driven by strategic contributions to quality assurance processes.</p>
+                </div>
+                <div class="cert-card">
+                    <h3 class="cert-title">Rise Award</h3>
+                    <p>Recognized for approaching every task with enthusiasm and a positive attitude.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>parimalaavegu@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <p>+91 8142063617</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Vizag, Andhra Pradesh, India</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="GitHub">gh</a>
+                <a href="#" title="Twitter">tw</a>
+            </div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>&copy; 2025 Vegu Parimala. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
